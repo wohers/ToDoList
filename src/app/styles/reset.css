@@ -1,0 +1,45 @@
+*{
+  box-sizing: border-box;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+textarea {
+  font: inherit;
+}
+
+menu,
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset {
+  border: none;
+  min-width: unset;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
