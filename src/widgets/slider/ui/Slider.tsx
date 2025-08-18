@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { MdToday, MdDoneAll } from "react-icons/md";
-import { FaUser, FaInbox, FaCalendarAlt } from "react-icons/fa";
-import { IoSettings } from "react-icons/io5";
+import { FaUser, FaInbox, FaCalendarAlt, FaPlus } from "react-icons/fa";
+import { IoSettings, IoLogOut } from "react-icons/io5";
 import { GrSupport } from "react-icons/gr";
 
 export const Slider = () => {
@@ -15,6 +15,12 @@ export const Slider = () => {
               <span className="text-[16px] mt-1">User</span>
             </div>
             <div className="space-y-2">
+              <button className="flex items-center px-3 py-2 rounded-lg transition hover:bg-gray-900 w-[100%]">
+                <FaPlus className="mr-3 w-[20px] h-[20px] text-[#B83737]" />
+                <span className="text-[16px] font-semibold text-[#B83737]">
+                  Добавить задачу
+                </span>
+              </button>
               <NavLink
                 to="/incoming"
                 className={({ isActive }) =>
@@ -70,14 +76,18 @@ export const Slider = () => {
             </div>
           </div>
           <div className="mt-auto ">
-            <div className="flex items-center px-3 py-2 rounded-lg transition text-white hover:bg-gray-700">
+            <button className="flex items-center px-3 py-2 rounded-lg transition text-white hover:bg-gray-700 w-[100%]">
               <IoSettings className="mr-3 w-[20px] h-[20px]" />
               <span className="text-[16px] font-semibold">Настройки</span>
-            </div>
-            <div className="flex items-center px-3 py-2 rounded-lg transition text-white hover:bg-gray-700">
+            </button>
+            <button className="flex items-center px-3 py-2 rounded-lg transition text-white hover:bg-gray-700 w-[100%]">
               <GrSupport className="mr-3 w-[20px] h-[20px]" />
               <span className="text-[16px] font-semibold">Поддержка</span>
-            </div>
+            </button>
+            <button className="flex items-center px-3 py-2 rounded-lg transition text-white hover:bg-gray-700 w-[100%]">
+              <IoLogOut className="mr-3 w-[25px] h-[25px]" />
+              <span className="text-[16px] font-semibold">Выйти</span>
+            </button>
           </div>
         </nav>
       </aside>
