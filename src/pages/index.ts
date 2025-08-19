@@ -1,3 +1,5 @@
 export { Completed } from './completed/Completed'
 export { Today } from './today/Today'
 export { Incoming } from './incoming/Incoming'
+export { RegisterPage } from './registration/RegisterPage'
+export { LoginPage } from './login/LoginPage'
