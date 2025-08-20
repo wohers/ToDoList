@@ -6,11 +6,13 @@ import { authApi } from "../api/auth.api";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useLoginSchema } from "../validations/login.schema";
+import { useUserStore } from "../../../shared/stores/user.store";
 
 export const LoginForm = () => {
   const { loginSchema } = useLoginSchema();
   type LoginDataType = z.infer<typeof loginSchema>;
   const navigate = useNavigate();
+  const { setUser } = useUserStore();
 
   const {
     handleSubmit,
@@ -29,6 +31,7 @@ export const LoginForm = () => {
     mutationFn: authApi.login,
     onSuccess: (data) => {
       localStorage.setItem("token", data.data.token);
+      setUser(data.data.user);
       toast.success("Вы успешно Вошли!");
       navigate("/today");
     },
