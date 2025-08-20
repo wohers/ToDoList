@@ -1,8 +1,18 @@
+import { LoginForm } from "../../features/auth"
+import okak from "../../assets/images/окак.jpg";
+
 
 export const LoginPage = () => {
   return (
-    <div>
-      
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <div className="flex rounded-lg overflow-hidden max-w-4xl">
+        <div className="w-1/2 p-8">
+          <LoginForm />
+        </div>
+        <div className="w-1/2">
+          <img src={okak} alt="okak" className="w-full h-full object-cover" />
+        </div>
+      </div>
     </div>
   )
 }

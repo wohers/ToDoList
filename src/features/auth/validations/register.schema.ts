@@ -1,9 +1,8 @@
-import { number, z } from "zod";
+import { z } from "zod";
 
 export const useRegisterSchema = () => {
   const registerSchema = z
     .object({
-      id: number(),
       email: z.email({
         pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
         message: "Пожалуйста введите правильный email",
