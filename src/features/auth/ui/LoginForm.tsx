@@ -58,7 +58,7 @@ export const LoginForm = () => {
         {
           name: "password",
           label: "Пароль",
-          placeholder: "Придумайте его",
+          placeholder: "Введите пароль",
           type: "password",
         },
       ].map((fieldConfig) => (
