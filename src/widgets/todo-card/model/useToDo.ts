@@ -72,3 +72,13 @@ export const useOverdueToDos = () => {
 
   return { data: overdueTodos, ...rest };
 };
+
+export const useIncomingToDos = () => {
+  const { data, ...rest } = useToDo();
+
+  const incomingTodos = data?.data.filter((todo) => {
+    return !todo.date_of_completion;
+  });
+
+  return { data: incomingTodos, ...rest };
+};
