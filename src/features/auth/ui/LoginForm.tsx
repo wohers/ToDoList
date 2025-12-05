@@ -31,7 +31,8 @@ export const LoginForm = () => {
     mutationFn: authApi.login,
     onSuccess: (data) => {
       localStorage.setItem("token", data.data.token);
-      setUser(data.data.user);      
+      setUser(data.data.user);
+      localStorage.setItem('user', JSON.stringify(data.data.user))      
       toast.success("Вы успешно Вошли!");
       navigate("/today");
     },

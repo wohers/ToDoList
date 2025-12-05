@@ -3,8 +3,11 @@ import { MdToday, MdDoneAll } from "react-icons/md";
 import { FaUser, FaInbox, FaCalendarAlt, FaPlus } from "react-icons/fa";
 import { IoSettings, IoLogOut } from "react-icons/io5";
 import { GrSupport } from "react-icons/gr";
-
 export const Slider = () => {
+
+  const userStorage = localStorage.getItem('user')
+  const user = userStorage ? JSON.parse(userStorage) : null
+
   return (
     <div className="fixed left-0 top-0 h-screen w-[280px] bg-[#3A3A3A] shadow-lg p-5 flex flex-col transform transition-all duration-500 ease-out">
       <aside className="flex-1">
@@ -14,7 +17,7 @@ export const Slider = () => {
             <div className="flex gap-[10px] mb-2.5 border-b-2 border-gray-500 items-center pb-2.5 pl-3 transition-all duration-300 hover:border-[#B83737]">
               <FaUser className="w-[20px] h-[20px] transition-transform duration-300 hover:scale-110" />
               <span className="text-[16px] mt-1 transition-all duration-300 hover:text-[#B83737]">
-                User
+                {user['login']}
               </span>
             </div>
 
