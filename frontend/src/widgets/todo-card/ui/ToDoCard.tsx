@@ -21,14 +21,17 @@ const ToDoCard = ({ todo, onEdit, onDelete, onToggle }: ToDoCardProps) => {
 
   return (
     <div
-      className={`w-full bg-[#3A3A3A] border ${overdue ? "border-red-500/80 shadow-red-900/20" : "border-gray-600/60"} rounded-xl p-5 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-[#B83737] group`}
+      // Добавили h-full и flex flex-col
+      className={`w-full h-full flex flex-col bg-[#3A3A3A] border ${overdue ? "border-red-500/80 shadow-red-900/20" : "border-gray-600/60"} rounded-xl p-5 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-[#B83737] group`}
     >
-      <div className="flex justify-between items-start gap-4">
-        <div className="flex items-start gap-3.5 flex-1 min-w-0">
+      <div className="flex justify-between items-start gap-4 flex-1">
+        
+        {/* Контейнер для чекбокса и текста (добавили h-full) */}
+        <div className="flex items-start gap-3.5 flex-1 min-w-0 h-full">
           <button
             type="button"
             onClick={() => onToggle?.(todo)}
-            className="mt-1 text-gray-400 hover:text-[#B83737] transition-colors focus:outline-none cursor-pointer"
+            className="mt-1 text-gray-400 hover:text-[#B83737] transition-colors focus:outline-none cursor-pointer shrink-0"
             title={isCompleted ? "Отметить как невыполненную" : "Выполнить"}
           >
             {isCompleted ? (
@@ -38,7 +41,8 @@ const ToDoCard = ({ todo, onEdit, onDelete, onToggle }: ToDoCardProps) => {
             )}
           </button>
 
-          <div className="flex-1 min-w-0">
+          {/* Контейнер контента (добавили h-full flex flex-col, чтобы выталкивать дату вниз) */}
+          <div className="flex-1 min-w-0 h-full flex flex-col">
             <div className="flex items-center gap-2 flex-wrap">
               <h3
                 className={`text-base font-semibold tracking-wide text-white truncate ${isCompleted ? "line-through text-gray-400" : ""}`}
@@ -46,7 +50,7 @@ const ToDoCard = ({ todo, onEdit, onDelete, onToggle }: ToDoCardProps) => {
                 {todo.title}
               </h3>
               {todo.priority && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-[#B83737]/20 text-[#B83737] border border-[#B83737]/40">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-[#B83737]/20 text-[#B83737] border border-[#B83737]/40 shrink-0">
                   <MdPriorityHigh className="w-3.5 h-3.5" />
                   Важно
                 </span>
@@ -59,8 +63,9 @@ const ToDoCard = ({ todo, onEdit, onDelete, onToggle }: ToDoCardProps) => {
               </p>
             )}
 
+            {/* Добавили mt-auto pt-3, чтобы дата всегда прижималась к низу, если карточка растянулась */}
             {todo.date_of_completion && (
-              <div className="mt-3 flex items-center gap-2 text-xs">
+              <div className="mt-auto pt-3 flex items-center gap-2 text-xs">
                 <span
                   className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium ${
                     overdue
@@ -70,7 +75,7 @@ const ToDoCard = ({ todo, onEdit, onDelete, onToggle }: ToDoCardProps) => {
                         : "bg-gray-700/60 text-gray-300 border border-gray-600/50"
                   }`}
                 >
-                  <FaRegCalendarAlt className="w-3.5 h-3.5" />
+                  <FaRegCalendarAlt className="w-3.5 h-3.5 shrink-0" />
                   {dayjs(todo.date_of_completion).format("D MMMM YYYY")}
                   {overdue && " (Просрочено)"}
                   {today && " (Сегодня)"}
@@ -80,7 +85,8 @@ const ToDoCard = ({ todo, onEdit, onDelete, onToggle }: ToDoCardProps) => {
           </div>
         </div>
 
-        <div className="flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
+        {/* Кнопки управления */}
+        <div className="flex items-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity shrink-0">
           <button
             type="button"
             onClick={() => onEdit?.(todo)}
